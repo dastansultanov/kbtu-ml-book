@@ -527,7 +527,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normality-assumptions">Normality assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data">Split Train and Test data</a></li>
 </ul>
 </li>
@@ -903,8 +906,11 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <p>From just looking at these simple graphical representations of the features, we can already tell that the petal lengths and widths are likely better suited as potential features two separate between the three flower classes. In practice, instead of reducing the dimensionality via a projection (here: LDA), a good alternative would be a feature selection technique. For low-dimensional datasets like Iris, a glance at those histograms would already be very informative.</p>
+<section id="normality-assumptions">
+<span id="id1"></span><h3>Normality assumptions<a class="headerlink" href="#normality-assumptions" title="Permalink to this heading">#</a></h3>
+<p>It should be mentioned that LDA assumes normal distributed data, features that are** statistically independen<strong>t, and</strong> identical covariance matrice**s for every class. However, this only applies for LDA as classifier and LDA for dimensionality reduction can also work reasonably well if those assumptions are violated.</p>
 <section id="dimension-reduction">
-<h3>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this heading">#</a></h3>
+<h4>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this heading">#</a></h4>
 <p>We will first try to use LDA to reduce the number of features. LDA reduces dimensionality from original number of feature to
 (C-1) features, where C is the number of classes. In this case, we have 3 classes, therefore the new feature space will have only 2 features</p>
 <div class="cell docutils container">
@@ -999,6 +1005,7 @@ LDA 2: 0.88%
 <p>That’s it we are able to use LDA to reduce thnumberer of features <strong>from 4 to 2</strong></p>
 <p>Finally, let’t move on to the classification task itself.</p>
 </section>
+</section>
 <section id="split-train-and-test-data">
 <h3>Split Train and Test data<a class="headerlink" href="#split-train-and-test-data" title="Permalink to this heading">#</a></h3>
 <p>For the classification task, since we don’t have a test dataset we are going to split our original data. 70% will be used for training the model and 30% will be used as validation.
@@ -1036,10 +1043,10 @@ Training: [0.33333333 0.33333333 0.33333333]
 </div>
 </div>
 </div>
+<p>Transform data to follow assumption 2 regarding <a class="reference internal" href="#normality-assumptions"><span class="std std-ref">variance of the data</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform data to follow assumption 2 regarding variance of the data</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="n">scaler</span><span class="o">=</span><span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
@@ -1216,7 +1223,10 @@ We are able to classify the IRIS dataset and have high performance metrics as it
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normality-assumptions">Normality assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data">Split Train and Test data</a></li>
 </ul>
 </li>
