@@ -525,12 +525,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-discriminant-functions">3. Select Discriminant Functions:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data-y">Split Train and Test data y.</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data">Split Train and Test data.</a></li>
 </ul>
 </li>
 </ul>
@@ -742,8 +740,9 @@ LDA can be applied to features extracted from speech signals to classify spoken 
 <p class="admonition-title">Remember</p>
 <p>Evaluating your model using these metrics is crucial to understanding its strengths and weaknesses, guiding potential improvements, and ensuring its suitability for real-world applications.</p>
 </div>
+</section>
 <section id="lda-implementation">
-<h3>LDA Implementation<a class="headerlink" href="#lda-implementation" title="Permalink to this heading">#</a></h3>
+<h2>LDA Implementation<a class="headerlink" href="#lda-implementation" title="Permalink to this heading">#</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Try it</p>
 <p>Feel free to adapt the code to your specific dataset and requirements.</p>
@@ -905,9 +904,9 @@ memory usage: 6.0+ KB
 </div>
 <p>From just looking at these simple graphical representations of the features, we can already tell that the petal lengths and widths are likely better suited as potential features two separate between the three flower classes. In practice, instead of reducing the dimensionality via a projection (here: LDA), a good alternative would be a feature selection technique. For low-dimensional datasets like Iris, a glance at those histograms would already be very informative.</p>
 <section id="dimension-reduction">
-<h4>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this heading">#</a></h4>
+<h3>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this heading">#</a></h3>
 <p>We will first try to use LDA to reduce the number of features. LDA reduces dimensionality from original number of feature to
-(C—1) features, where C is the number of classes. In this case, we have 3 classes, therefore the new feature space will have only 2 features</p>
+(C-1) features, where C is the number of classes. In this case, we have 3 classes, therefore the new feature space will have only 2 features</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span> <span class="k">as</span> <span class="n">LDA</span>
@@ -997,11 +996,11 @@ LDA 2: 0.88%
 </div>
 </div>
 <p>The scatter plot above represents our new feature subspace that we constructed via LDA. We can see that the first linear discriminant <strong>LD1</strong> separates the classes quite nicely. However, the second discriminant, <strong>LD2</strong>, does not add much valuable information,which we’ve already concluded when we looked at the ranked varianvce explained.</p>
-<p>That’s it we are able to use LDA to reduce thnumberer of feature<strong>s from to 2</strong></p>
-<p>Finally, let’t move on to the classification task itself2.</p>
+<p>That’s it we are able to use LDA to reduce thnumberer of features <strong>from 4 to 2</strong></p>
+<p>Finally, let’t move on to the classification task itself.</p>
 </section>
-<section id="split-train-and-test-data-y">
-<h4>Split Train and Test data y.<a class="headerlink" href="#split-train-and-test-data-y" title="Permalink to this heading">#</a></h4>
+<section id="split-train-and-test-data">
+<h3>Split Train and Test data.<a class="headerlink" href="#split-train-and-test-data" title="Permalink to this heading">#</a></h3>
 <p>For the classification task, since we don’t have a test dataset we are going to split our original data. 70% will be used for training the model and 30% will be used as validation.
 To split our data we are going to call function train_test_split from scikit-learn library.</p>
 <div class="cell docutils container">
@@ -1108,8 +1107,8 @@ weighted avg       0.98      0.98      0.98       105
 </div>
 </div>
 </div>
-<p>That’s it we are done with the implementation of LDA as a classifier. We are able to classify the IRIS dataset and have high performance metrics</p>
-</section>
+<p>That’s it! We are done with the implementation of LDA as a classifier.
+We are able to classify the IRIS dataset and have high performance metrics as it could be seen above</p>
 </section>
 </section>
 </section>
@@ -1215,12 +1214,10 @@ weighted avg       0.98      0.98      0.98       105
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-discriminant-functions">3. Select Discriminant Functions:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data-y">Split Train and Test data y.</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-implementation">LDA Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-reduction">Dimension Reduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-train-and-test-data">Split Train and Test data.</a></li>
 </ul>
 </li>
 </ul>
