@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Discriminant Analysis (QDA) &#8212; ML book</title>
+    <title>Linear Discriminant Analysis (LDA) &#8212; ML book</title>
   
   
   
@@ -64,9 +64,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'probabilistic_models/LDA';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quadratic Discriminant Analysis (QDA)" href="QDA.html" />
+    <link rel="prev" title="Probabilistic models for logistic regression" href="log_reg_prob.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro/applications.html">Applications of ML</a></li>
@@ -203,14 +207,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="probabilistic.html">Probabilistic models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Discriminant Analysis (LDA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/classification.html">Classification tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/regression.html">Regression tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/adaboost.html">AdaBoost</a></li>
@@ -218,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/catboost.html">CatBoost</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
@@ -228,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
@@ -238,7 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../mlp/optimization_dl.html">Optimization in DL</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cnn/cnn.html">CNN</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cnn/cnn.html">CNN</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_2d.html">Convolution of matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cnn/pooling.html">Pooling</a></li>
@@ -247,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../cnn/architectures.html">Architectures of CNN</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rnn/lstm.html">LSTM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rnn/gru.html">GRU</a></li>
@@ -255,13 +268,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../rnn/transformers.html">Transformers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../gm/generative.html">Generative models</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gm/generative.html">Generative models</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../gm/autoencoders.html">Autoencoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gm/vae.html">Variational autoencoders (VAE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
@@ -271,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python/python_basics.html">Python Basics</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/python_basics.html">Python Basics</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python/basics/basic_types.html">Basic Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/basics/variables.html">Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/basics/control_flow.html">Control flow</a></li>
@@ -286,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/linear_systems.html">Linear systems</a></li>
@@ -301,18 +314,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">1-d calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../math/probability.html">Probability</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/optimization/GD.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/optimization/SGD.html">Stochastic gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/optimization/newton.html">Newton’s method</a></li>
@@ -449,7 +464,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -460,11 +477,74 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Linear Discriminant Analysis (QDA)</h1>
+    <h1>Linear Discriminant Analysis (LDA)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Discriminant Analysis (LDA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-lda">Introduction to LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-context">Historical Context</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-foundations-of-lda">Theoretical Foundations of LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">Objective Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-decomposition">Eigenvalue Decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-limitations">Assumptions and Limitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation">Limitation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-of-lda">Purpose of LDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction-with-lda">Dimensionality Reduction with LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-of-dimensionality-reduction">Objectives of Dimensionality Reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-using-lda">Classification using LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-principle-of-lda-in-classification">Working Principle of LDA in Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-lda-in-classification">Applications of LDA in Classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications-of-lda">Practical Applications of LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-examples">Real-world Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#facial-recognition-systems">Facial Recognition Systems:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide-to-implementing-lda">Step by Step Guide to Implementing LDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-covariance-matrices">1. Compute Covariance Matrices:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">2. Solve Eigenvalue Problem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-discriminant-functions">3. Select Discriminant Functions:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">1. Accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">2. Precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-sensitivity">3. Recall (Sensitivity)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">4. F1 Score</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-lda-implementation">Code for LDA Implementation</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -474,14 +554,267 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-discriminant-analysis-qda">
-<h1>Linear Discriminant Analysis (QDA)<a class="headerlink" href="#linear-discriminant-analysis-qda" title="Permalink to this heading">#</a></h1>
-<p>Resources:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-discriminant-analysis-lda">
+<h1>Linear Discriminant Analysis (LDA)<a class="headerlink" href="#linear-discriminant-analysis-lda" title="Permalink to this heading">#</a></h1>
+<section id="introduction-to-lda">
+<h2>Introduction to LDA<a class="headerlink" href="#introduction-to-lda" title="Permalink to this heading">#</a></h2>
+<p><strong>Linear Discriminant Analysis (LDA)</strong> is a statistical method used for dimensionality reduction and classification in machine learning. At its core, LDA seeks to find the linear combinations of features that best separate different classes in a dataset. This allows for efficient representation of data while maximizing class separability.</p>
+<section id="historical-context">
+<h3>Historical Context<a class="headerlink" href="#historical-context" title="Permalink to this heading">#</a></h3>
+<p>Introduced by Ronald A. Fisher in the 1930s, LDA has since become a fundamental tool in the fields of statistics and machine learning. Fisher formulated LDA as a means to find the linear combination of features that maximizes the ratio of between-class variance to within-class variance.</p>
+</section>
+</section>
+<section id="theoretical-foundations-of-lda">
+<h2>Theoretical Foundations of LDA<a class="headerlink" href="#theoretical-foundations-of-lda" title="Permalink to this heading">#</a></h2>
+<section id="mathematical-formulation">
+<h3>Mathematical Formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this heading">#</a></h3>
+<section id="objective-function">
+<h4>Objective Function<a class="headerlink" href="#objective-function" title="Permalink to this heading">#</a></h4>
+<p>The primary goal of LDA is to maximize the between-class scatter while minimizing the within-class scatter. The objective function can be expressed as:
+$<span class="math notranslate nohighlight">\(
+J(W) = \frac{{\text{{det}}(W^{-1}B)}}{{\text{{det}}(W^{-1}W)}} 
+\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\((W)\)</span> is the weight matrix, <span class="math notranslate nohighlight">\((B)\)</span> is the between-class scatter matrix, and <span class="math notranslate nohighlight">\((W^{-1})\)</span> denotes the inverse of <span class="math notranslate nohighlight">\((W)\)</span>.</p>
+</section>
+<section id="eigenvalue-decomposition">
+<h4>Eigenvalue Decomposition<a class="headerlink" href="#eigenvalue-decomposition" title="Permalink to this heading">#</a></h4>
+<p>To maximize the objective function, LDA involves the eigenvalue decomposition of (W^{-1}B). The eigenvectors corresponding to the largest eigenvalues form the basis for the discriminant subspace.</p>
+<div class="math notranslate nohighlight">
+\[ W^{-1}Bv_i = \lambda_i v_i \]</div>
+<p>where <span class="math notranslate nohighlight">\((v_i)\)</span> is the <span class="math notranslate nohighlight">\((i)\)</span>-th eigenvector, and <span class="math notranslate nohighlight">\((\lambda_i)\)</span> is the corresponding eigenvalue.</p>
+</section>
+</section>
+<section id="assumptions-and-limitations">
+<h3>Assumptions and Limitations<a class="headerlink" href="#assumptions-and-limitations" title="Permalink to this heading">#</a></h3>
+<section id="assumptions">
+<h4>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Multivariate Normality:</strong> LDA assumes that the features in each class follow a multivariate normal distribution.</p></li>
+<li><p><strong>Equality of Covariance Matrices:</strong> It assumes that the covariance matrices of different classes are equal.</p></li>
+</ol>
+</section>
+<section id="limitation">
+<h4>Limitation<a class="headerlink" href="#limitation" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Sensitive to Outliers:</strong> LDA can be sensitive to outliers, impacting its performance.</p></li>
+<li><p><strong>Assumption Violations:</strong> If the assumptions are violated, the effectiveness of LDA may be compromised.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Considering these limitatuins is essential for practitioners to use LDA effectively and understand potential challenges or issues that may arise when applying the method to real-world datasets.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="purpose-of-lda">
+<h2>Purpose of LDA<a class="headerlink" href="#purpose-of-lda" title="Permalink to this heading">#</a></h2>
+<p>LDA serves a dual purpose: it reduces the dimensionality of the data while retaining information relevant for classification, making it a versatile technique in machine learning applications.</p>
+</section>
+<section id="dimensionality-reduction-with-lda">
+<h2>Dimensionality Reduction with LDA<a class="headerlink" href="#dimensionality-reduction-with-lda" title="Permalink to this heading">#</a></h2>
+<p>In high-dimensional spaces, the distance between data points increases, making algorithms prone to overfitting. Working with lower-dimensional data can lead to more computationally efficient models. Therefore, reduced dimensionality makes it easier to visualize data and its inherent patterns.
+LDA is often used for dimensionality reduction. The primary goal is to transform the original feature space into a lower-dimensional space while preserving the discriminatory information between classes. In other words, LDA looks for a projection of the data in a way that maximizes the separation between different classes.</p>
+<section id="objectives-of-dimensionality-reduction">
+<h3>Objectives of Dimensionality Reduction<a class="headerlink" href="#objectives-of-dimensionality-reduction" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>LDA aims to <strong>maximize the distance between the means</strong> of different classes, enhancing class separability.</p></li>
+<li><p>Simultaneously, LDA seeks to <strong>minimize the scatter within each class</strong>, ensuring compact clusters.</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>LDA accomplishes these objectives by finding a subspace that best captures the essential information for classification.</p>
+</div>
+</section>
+</section>
+<section id="classification-using-lda">
+<h2>Classification using LDA<a class="headerlink" href="#classification-using-lda" title="Permalink to this heading">#</a></h2>
+<p>Once LDA has been applied for dimensionality reduction, it can be employed for classification tasks. The process involves training the model on a labeled dataset, where the class labels are known, and learning the discriminative patterns in the reduced-dimensional space.</p>
+<section id="working-principle-of-lda-in-classification">
+<h3>Working Principle of LDA in Classification<a class="headerlink" href="#working-principle-of-lda-in-classification" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>LDA aims to find decision boundaries that best separate different classes in the reduced space.</p></li>
+<li><p>LDA can be interpreted as a probabilistic model. It models the distribution of features for each class and uses Bayes’ theorem to calculate the probability of a data point belonging to a particular class.</p></li>
+<li><p>Given a set of features for an unseen data point, LDA can predict the most likely class based on the learned discriminative patterns during training.</p></li>
+</ol>
+</section>
+<section id="applications-of-lda-in-classification">
+<h3>Applications of LDA in Classification<a class="headerlink" href="#applications-of-lda-in-classification" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-generativnyj-podhod-k-klassifikacii#linear-discriminant-analysis">ML Handbook</a></p></li>
-<li><p><span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>, section 9.2.2</p></li>
-<li><p><a class="reference external" href="https://www.statlearning.com/">An Introduction to Statistical Learning</a>, section 4.4.2</p></li>
+<li><p><strong>Face Recognition:</strong>
+LDA is commonly used for face recognition tasks where reducing the dimensionality of facial features enhances the accuracy of recognition.</p></li>
+<li><p><strong>Medical Diagnosis:</strong>
+In medical diagnostics, LDA can help classify patients into different diagnostic categories based on relevant features.</p></li>
+<li><p><strong>Speech Recognition:</strong>
+LDA can be applied to features extracted from speech signals to classify spoken words or phrases.</p></li>
 </ul>
+</section>
+</section>
+<section id="practical-applications-of-lda">
+<h2>Practical Applications of LDA<a class="headerlink" href="#practical-applications-of-lda" title="Permalink to this heading">#</a></h2>
+<section id="real-world-examples">
+<h3>Real-world Examples<a class="headerlink" href="#real-world-examples" title="Permalink to this heading">#</a></h3>
+<section id="facial-recognition-systems">
+<h4>Facial Recognition Systems:<a class="headerlink" href="#facial-recognition-systems" title="Permalink to this heading">#</a></h4>
+<p>In computer vision, LDA is applied to extract discriminative features for facial recognition. By capturing the essential characteristics that differentiate faces, LDA enhances the accuracy of recognition systems.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Industry Use Cases</p>
+<p>Fraud Detection in Banking</p>
+<p>Linear Discriminant Analysis (LDA) proves to be a valuable tool in the banking industry, particularly in the realm of fraud detection. Here’s how LDA is applied to address the challenges associated with identifying fraudulent transactions:</p>
+<p>*Banks face the constant challenge of distinguishing between legitimate and fraudulent transactions within vast datasets. The goal is to detect unusual patterns or anomalies that may indicate fraudulent activities.</p>
+<p>*LDA helps model the characteristics of legitimate and fraudulent transactions by analyzing the underlying patterns in the data. It aims to maximize the separation between different classes, making it effective in distinguishing between normal and potentially fraudulent behavior.</p>
+<ul class="simple">
+<li><p>Let’s denote the features of the transactions as <span class="math notranslate nohighlight">\((X)\)</span> and the corresponding class labels as <span class="math notranslate nohighlight">\((y)\)</span>. The primary objective is to find the linear combination of features that maximizes the distance between the means of different classes while minimizing the spread within each class. This is achieved through the optimization of the LDA objective function.</p></li>
+</ul>
+<p>*In a practical scenario, the transaction data would be preprocessed, ensuring proper handling of missing values and scaling of features. Next, you’d apply LDA to compute the discriminant functions, leveraging the covariance matrices to identify the most discriminative directions in the data.</p>
+<p>*The application of LDA in fraud detection enables the creation of a model that can identify potentially fraudulent transactions based on their deviation from the learned patterns. This contributes to enhancing the security and integrity of banking systems.</p>
+<p>By leveraging LDA, banks can significantly improve their ability to detect and prevent fraudulent activities, ultimately safeguarding the interests of both the financial institution and its customers.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-by-step-guide-to-implementing-lda">
+<h1>Step by Step Guide to Implementing LDA<a class="headerlink" href="#step-by-step-guide-to-implementing-lda" title="Permalink to this heading">#</a></h1>
+<section id="data-preprocessing">
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before applying LDA, ensure proper data preprocessing.</p>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Handling Missing Values</strong></p>
+<ul class="simple">
+<li><p>Address any missing values in the dataset. Fill in missing values or remove instances with missing data to ensure a complete dataset.</p></li>
+</ul>
+</li>
+<li><p><strong>Scaling Features</strong></p>
+<ul class="simple">
+<li><p>Standardize or normalize features. This step ensures that all features contribute equally to the analysis, preventing any particular feature from dominating the model due to its scale.</p></li>
+</ul>
+</li>
+<li><p><strong>Checking Assumptions</strong></p>
+<ul class="simple">
+<li><p>Verify that your data meets LDA assumptions. LDA assumes that the features in each class follow a multivariate normal distribution, and the covariance matrices of different classes are equal.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="model-training">
+<h2>Model Training<a class="headerlink" href="#model-training" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Where the fun begins</p>
+<p>Now, let’s delve into the details of training your LDA model.</p>
+</div>
+<section id="compute-covariance-matrices">
+<h3>1. Compute Covariance Matrices:<a class="headerlink" href="#compute-covariance-matrices" title="Permalink to this heading">#</a></h3>
+<p>The within-class covariance matrix <span class="math notranslate nohighlight">\((S_W)\)</span> and the between-class covariance matrix <span class="math notranslate nohighlight">\((S_B)\)</span> are calculated as follows:</p>
+<ul>
+<li><p>Within-class covariance matrix <span class="math notranslate nohighlight">\((S_W)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[S_W = \sum_{i=1}^{c} \sum_{j=1}^{n_i} (x_{ij} - \mu_i)(x_{ij} - \mu_i)^T\]</div>
+<p>where <span class="math notranslate nohighlight">\((c)\)</span> is the number of classes, <span class="math notranslate nohighlight">\((n_i)\)</span> is the number of samples in class <span class="math notranslate nohighlight">\((i)\)</span>, <span class="math notranslate nohighlight">\((x_{ij})\)</span> is the <span class="math notranslate nohighlight">\((j)\)</span>-th sample from class <span class="math notranslate nohighlight">\((i)\)</span>, and <span class="math notranslate nohighlight">\((\mu_i)\)</span> is the mean vector of class <span class="math notranslate nohighlight">\((i)\)</span>.</p>
+</li>
+<li><p>Between-class covariance matrix <span class="math notranslate nohighlight">\((S_B)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[S_B = \sum_{i=1}^{c} n_i (\mu_i - \mu)(\mu_i - \mu)^T\]</div>
+<p>where <span class="math notranslate nohighlight">\((c)\)</span> is the number of classes, <span class="math notranslate nohighlight">\((n_i)\)</span> is the number of samples in class <span class="math notranslate nohighlight">\((i)\)</span>, <span class="math notranslate nohighlight">\((\mu_i)\)</span> is the mean vector of class <span class="math notranslate nohighlight">\((i)\)</span>, and <span class="math notranslate nohighlight">\((\mu)\)</span> is the overall mean vector.</p>
+</li>
+</ul>
+</section>
+<section id="solve-eigenvalue-problem">
+<h3>2. Solve Eigenvalue Problem:<a class="headerlink" href="#solve-eigenvalue-problem" title="Permalink to this heading">#</a></h3>
+<p>Next, solve the eigenvalue problem to obtain the eigenvalues <span class="math notranslate nohighlight">\(\lambda\)</span> and corresponding eigenvectors <span class="math notranslate nohighlight">\((v)\)</span> of the matrix <span class="math notranslate nohighlight">\((S_W^{-1}S_B)\)</span>. This involves solving the following equation:</p>
+<div class="math notranslate nohighlight">
+\[S_W^{-1}S_Bv = \lambda v\]</div>
+</section>
+<section id="select-discriminant-functions">
+<h3>3. Select Discriminant Functions:<a class="headerlink" href="#select-discriminant-functions" title="Permalink to this heading">#</a></h3>
+<p>Choose the top <span class="math notranslate nohighlight">\((k)\)</span> eigenvectors corresponding to the <span class="math notranslate nohighlight">\((k)\)</span> largest eigenvalues to form the matrix <span class="math notranslate nohighlight">\((W)\)</span>. The discriminant functions can be defined as:</p>
+<div class="math notranslate nohighlight">
+\[Y = XW\]</div>
+<p>where <span class="math notranslate nohighlight">\((Y)\)</span> is the transformed feature matrix, <span class="math notranslate nohighlight">\((X)\)</span> is the original feature matrix, and <span class="math notranslate nohighlight">\((W)\)</span> contains the selected eigenvectors.</p>
+<p>These discriminant functions will serve as the basis for making predictions and defining decision boundaries in your LDA model.</p>
+</section>
+</section>
+<section id="evaluation-metrics">
+<h2>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permalink to this heading">#</a></h2>
+<p>After training your LDA model, it’s crucial to assess its performance using various evaluation metrics. These metrics provide insights into how well the model generalizes to new, unseen data. Let’s explore some commonly used evaluation metrics.</p>
+<section id="accuracy">
+<h3>1. Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h3>
+<p>Accuracy is the most straightforward metric, representing the ratio of correctly predicted instances to the total number of instances. It is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Number of Predictions}}\]</div>
+</section>
+<section id="precision">
+<h3>2. Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h3>
+<p>Precision focuses on the accuracy of positive predictions. It is the ratio of correctly predicted positive instances to the total predicted positives, and it is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\text{Precision} = \frac{\text{True Positives}}{\text{True Positives + False Positives}}\]</div>
+</section>
+<section id="recall-sensitivity">
+<h3>3. Recall (Sensitivity)<a class="headerlink" href="#recall-sensitivity" title="Permalink to this heading">#</a></h3>
+<p>Recall, also known as sensitivity or true positive rate, measures the ability of the model to identify all relevant instances. It is calculated as the ratio of true positives to the total actual positives:</p>
+<div class="math notranslate nohighlight">
+\[\text{Recall} = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}\]</div>
+</section>
+<section id="f1-score">
+<h3>4. F1 Score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h3>
+<p>The F1 score is the harmonic mean of precision and recall, providing a balanced measure between precision and recall. It is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}\]</div>
+<div class="warning admonition">
+<p class="admonition-title">Remember</p>
+<p>Evaluating your model using these metrics is crucial to understanding its strengths and weaknesses, guiding potential improvements, and ensuring its suitability for real-world applications.</p>
+</div>
+</section>
+</section>
+<section id="code-for-lda-implementation">
+<h2>Code for LDA Implementation<a class="headerlink" href="#code-for-lda-implementation" title="Permalink to this heading">#</a></h2>
+<p>This example assumes you have preprocessed your data, loaded features <span class="math notranslate nohighlight">\((X)\)</span> and labels <span class="math notranslate nohighlight">\((y)\)</span>, and split the dataset into training and testing sets. It then applies Linear Discriminant Analysis <strong>(LDA)</strong> and uses a simple Logistic Regression classifier for training and evaluation. The evaluation metrics include accuracy, precision, recall, and F1 score, providing a comprehensive assessment of the model’s performance.</p>
+<div class="tip admonition">
+<p class="admonition-title">Try it</p>
+<p>Feel free to adapt the code to your specific dataset and requirements.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+
+<span class="c1"># Your data preprocessing and loading here</span>
+<span class="c1"># Assume you have X (features) and y (labels) loaded and preprocessed</span>
+
+<span class="c1"># Split the data into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Apply LDA</span>
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">()</span>
+<span class="n">X_train_lda</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test_lda</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Your model training and evaluation code here</span>
+<span class="c1"># For simplicity, let&#39;s use a basic classifier like Logistic Regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># Instantiate and train the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_lda</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions on the test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_lda</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Print the evaluation metrics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1 Score: </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -514,12 +847,99 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="log_reg_prob.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Probabilistic models for logistic regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="QDA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quadratic Discriminant Analysis (QDA)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Discriminant Analysis (LDA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-lda">Introduction to LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-context">Historical Context</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-foundations-of-lda">Theoretical Foundations of LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">Objective Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-decomposition">Eigenvalue Decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-limitations">Assumptions and Limitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation">Limitation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-of-lda">Purpose of LDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction-with-lda">Dimensionality Reduction with LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-of-dimensionality-reduction">Objectives of Dimensionality Reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-using-lda">Classification using LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-principle-of-lda-in-classification">Working Principle of LDA in Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-lda-in-classification">Applications of LDA in Classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications-of-lda">Practical Applications of LDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-examples">Real-world Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#facial-recognition-systems">Facial Recognition Systems:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide-to-implementing-lda">Step by Step Guide to Implementing LDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-covariance-matrices">1. Compute Covariance Matrices:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-eigenvalue-problem">2. Solve Eigenvalue Problem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-discriminant-functions">3. Select Discriminant Functions:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">1. Accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">2. Precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-sensitivity">3. Recall (Sensitivity)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">4. F1 Score</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-lda-implementation">Code for LDA Implementation</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
